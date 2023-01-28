@@ -68,3 +68,7 @@ E:\grafica\proiectfinaal2\proiectfinaal2\obj\Debug\net5.0\refint\proiectfinaal2.
 E:\grafica\proiectfinaal2\proiectfinaal2\obj\Debug\net5.0\proiectfinaal2.pdb
 E:\grafica\proiectfinaal2\proiectfinaal2\obj\Debug\net5.0\proiectfinaal2.genruntimeconfig.cache
 E:\grafica\proiectfinaal2\proiectfinaal2\obj\Debug\net5.0\ref\proiectfinaal2.dll
+E:\grafica\proiectfinaal2\proiectfinaal2\bin\Debug\net5.0\Microsoft.AspNetCore.JsonPatch.dll
+E:\grafica\proiectfinaal2\proiectfinaal2\bin\Debug\net5.0\Microsoft.AspNetCore.Mvc.NewtonsoftJson.dll
+E:\grafica\proiectfinaal2\proiectfinaal2\bin\Debug\net5.0\Newtonsoft.Json.dll
+E:\grafica\proiectfinaal2\proiectfinaal2\bin\Debug\net5.0\Newtonsoft.Json.Bson.dll

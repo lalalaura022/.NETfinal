@@ -9,6 +9,7 @@ using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
 using Microsoft.OpenApi.Models;
 using proiectfinaal2.data;
+using proiectfinaal2.Repositories.AnimalRepository;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -35,6 +36,10 @@ namespace proiectfinaal2
                 c.SwaggerDoc("v1", new OpenApiInfo { Title = "proiectfinaal2", Version = "v1" });
             });
             services.AddDbContext<Context>(options => options.UseSqlServer("Data Source=DESKTOP-LRCPFES;Initial Catalog=ProiectFinal;Integrated Security=True;Connect Timeout=30;Encrypt=False;TrustServerCertificate=False;ApplicationIntent=ReadWrite;MultiSubnetFailover=False"));
+            services.AddTransient<IAnimalRepository, AnimalRepository>();
+            services.AddControllersWithViews()
+                .AddNewtonsoftJson(options =>
+                options.SerializerSettings.ReferenceLoopHandling = Newtonsoft.Json.ReferenceLoopHandling.Ignore);
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
