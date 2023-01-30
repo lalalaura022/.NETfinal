@@ -1,4 +1,5 @@
 ﻿using Microsoft.AspNetCore.Http;
+using Microsoft.AspNetCore.JsonPatch;
 using Microsoft.AspNetCore.Mvc;
 using proiectfinaal2.Entities;
 using proiectfinaal2.Entities.DTOs;
@@ -32,14 +33,14 @@ namespace proiectfinaal2.Controllers
 
         }
 
-        [HttpGet("{id}")]
+        [HttpDelete("{id}")]
         public async Task<IActionResult> DeleteAnimal(int id)
         {
             var animal = await _repository.GetByIdWithAddress(id);
             return Ok(new AnimalDTO(animal));
         }
 
-        [HttpDelete("{id}")]
+        [HttpGet("{id}")]
         public async Task<IActionResult> GetAnimalById(int id)
         {
             var animal = await _repository.GetByIdAsync(id);
@@ -63,6 +64,29 @@ namespace proiectfinaal2.Controllers
 
             await _repository.SaveAsync();
             return Ok(new AnimalDTO(newanimal));
+        }
+
+        [HttpPatch("{id}")]
+        public async Task<IActionResult> Patch(int id, JsonPatchDocument<Animal> animal)
+        {
+            if (animal != null)
+            {
+                var animalForUpdate = await _repository.GetByIdAsync(id);
+                animal.ApplyTo(animalForUpdate, ModelState);
+
+                if (!ModelState.IsValid)
+                {
+                    return BadRequest();
+                }
+
+                await _repository.SaveAsync();
+                return Ok(new AnimalDTO(animalForUpdate));
+            }
+            else
+            {
+                return BadRequest();
+            }
+
         }
 
     }

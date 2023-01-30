@@ -12,6 +12,7 @@ namespace proiectfinaal2.data
         IdentityRoleClaim<int>, IdentityUserToken<int>>
     {
         public Context(DbContextOptions options) : base(options) { }
+        public DbSet<SessionToken> SessionTokens { get; set; }
         public DbSet<Animal> Animals { get; set; }
         public DbSet<Stapan> Stapani { get; set; }
         public DbSet<Medicament> Medicamente { get; set; }
