@@ -24,5 +24,32 @@ namespace proiectfinaal2.Repositories.AnimalRepository
         {
             return await _context.Animals.Where(a => a.Denumire.Equals(denumire)).FirstOrDefaultAsync();
         }
+
+        public async Task<Dictionary<int, int>> GetNumberOfStapani()
+        {
+            List<Animal> AnimalList = await _context.Animals.ToListAsync();
+            List<Stapan> StapanList = await _context.Stapani.ToListAsync();
+
+            var ls = from animal in AnimalList
+                     join stapan in StapanList
+                     on animal.Id equals stapan.AnimalId
+                     group animal by animal.Id into human
+                     select new
+                     {
+                         AnimalName = human.Key,
+                         NrOfStapani = human.Count()
+                     };
+
+            Dictionary<int, int> dict =
+            new Dictionary<int, int>();
+
+            foreach (var el in ls)
+            {
+                dict.Add(el.AnimalName, el.NrOfStapani);
+            }
+
+            return dict;
+        }
+      
     }
 }

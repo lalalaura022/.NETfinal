@@ -10,5 +10,6 @@ namespace proiectfinaal2.Repositories.AnimalRepository
         Task<Animal> GetByDenumire(string Denumire);
         Task<List<Animal>> AllAnimalsWithAddress();
         Task<Animal> GetByIdWithAddress(int id);
+        Task<Dictionary<int, int>> GetNumberOfStapani();
     }
 }
