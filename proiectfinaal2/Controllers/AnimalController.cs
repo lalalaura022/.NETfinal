@@ -88,6 +88,15 @@ namespace proiectfinaal2.Controllers
             }
 
         }
+       /* [HttpGet("AS")]
+        public async Task<IActionResult> GetAllAnimalsWithNumberOfStapani()
+        {
+            Dictionary<int, int> dict = new Dictionary<int, int>();
+            dict = await _repository.GetNumberOfStapani();
+
+            return Ok(dict);
+        }
+       */
 
     }
 }
